@@ -1,10 +1,10 @@
 # WorkoutTrackerApp
 
-How to start: 
+# How to start: 
 
 Pull into IDE, app runs on Tomcat server, also needs MySQL server running.
 
-Test credentials: 
+# Test credentials: 
 Login: Peter123 or Armin123
 Password: abcabcabc123
 
