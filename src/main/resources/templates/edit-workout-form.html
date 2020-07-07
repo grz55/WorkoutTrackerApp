@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker App - Edit Workout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="d-flex justify-content-center">
+        <img src="/dumbbell.png">
+        <h2>Workout Tracker Application</h2>
+        <br>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <form>
+            <input class="btn btn-success" type="button" value="Homepage"
+                   onclick="window.location.href='/my-workouts'"/>
+        </form>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <h3>Exercises list</h3>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Exercise performed ID</th>
+                <th>Name</th>
+                <th>Weight x reps</th>
+                <th>Rest time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="exercisePerformed : ${exercisePerformedList}">
+                <td th:text="${exercisePerformed.id}">ID</td>
+                <td th:text="${exercisePerformed.name}">Name</td>
+                <td th:text="${exercisePerformed.exerciseSetsList}">Weight x reps</td>
+                <td th:text="${exercisePerformed.restPeriod} + ' s'">Rest time</td>
+                <td>
+                    <a th:href="@{'/update-exercise-performed/' + ${exercisePerformed.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete-exercise-performed/' + ${exercisePerformed.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <h3>Edit workout</h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <form action="#" th:action="@{/update-workout/{id}(id=${workout.id})}" th:object="${workout}" method="post">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="date" th:field="*{date}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Additional comments:</td>
+                            <td><input type="text" th:field="*{additionalComment}"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">Save</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex justify-content-center">
+                <h3>Add exercise performed </h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <h6>Add exercise to your workout</h6>
+            </div>
+            <div class="d-flex justify-content-center">
+                <form action="#" th:action="@{/save-exercise-performed/{id}(id=${id})}" th:object="${exercisePerformed}"
+                      method="post">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" th:field="*{name}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Rest time [s]:</td>
+                            <td><input type="number" th:field="*{restPeriod}"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex justify-content-center">
+                <h3>Add exercise sets </h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <h6>Add sets to chosen exercise (id)</h6>
+            </div>
+            <div class="d-flex justify-content-center">
+                <form action="#" th:action="@{/save-exercise-sets/{id}(id=${id})}" th:object="${exerciseSets}"
+                      method="post">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Exercise ID:</td>
+                            <td><input type="number" th:field="*{id}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Weight [kg]:</td>
+                            <td><input type="number" th:field="*{weight}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Reps</td>
+                            <td><input type="number" th:field="*{reps}"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker App - My Workouts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="d-flex justify-content-center">
+        <img src="dumbbell.png">
+        <h2>Workout Tracker Application</h2>
+        <br>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        Logged as:
+        <tr th:text="${username}"></tr>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <input class="btn btn-success" type="button" value="Homepage" onclick="window.location.href='/my-workouts'"/>
+        <input class="btn btn-success" type="button" value="Add workout" onclick="window.location.href='/add-workout'"/>
+
+        <form id="logoutForm" method="POST" th:action="@{/logout}">
+            <button type="submit" class="btn btn-success">Log out</button>
+        </form>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <h2>My workouts</h2>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Workout number</th>
+                <th>Date</th>
+                <th>Exercises Performed</th>
+                <th>Additional comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="workout, iStat : ${workoutsList}">
+                <td th:text="${iStat.count}">Workout number</td>
+                <td th:text="${workout.date}">Date</td>
+                <td>
+                    <table th:if="${workout.exercisePerformedList != null}">
+                        <tr th:each="exercisePerformed, iStat : ${workout.exercisePerformedList}">
+                            <td th:text="${iStat.index+1}"></td>
+                            <td th:text="${exercisePerformed.name}"></td>
+                            <td th:text="${exercisePerformed.exerciseSetsList}"></td>
+                            <td th:text="${exercisePerformed.restPeriod} + ' s'"></td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td th:text="${workout.additionalComment}">Additional comment</td>
+                <td>
+                    <a th:href="@{'/update-workout/' + ${workout.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete-workout/' + ${workout.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+</div>
+
+</body>
+</html>
