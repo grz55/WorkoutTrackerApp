@@ -3,6 +3,7 @@
 # How to start: 
 
 Pull into IDE, app runs on Tomcat server, also needs MySQL server running.
+When compiling import.sql file should start to add test user accounts.
 
 # Test credentials: 
 Login: Peter123 or Armin123
