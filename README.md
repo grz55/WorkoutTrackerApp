@@ -8,18 +8,18 @@ Pull into IDE, app runs on Tomcat server, also needs MySQL server running.
 Login: Peter123 or Armin123
 Password: abcabcabc123
 
-Description: 
+# Description: 
 
 This app lets you organize your workout notes. 
 User can manage notes. Access to other users' workouts in restricted.
 Every workout include exercises performed. Every exercise performed has its own data (e.g. weight, repetitions).
 All units can be easily organized.
 
-Technologies: 
+# Technologies: 
 
 Java, Spring Boot, Spring Security, Spring Data, Hibernate, MySQL, Thymeleaf
 
-App features:
+# App features:
 
 - creating account
 - loggin in
@@ -29,3 +29,9 @@ App features:
 - creating, editing, removing exercise sets (weight x reps) in exercises
 - validating form errors
 - basic error handling
+
+# For future:
+
+- code can be always cleaner
+- workout templates to speed up adding
+- selecting to edit by JS checkbox, not by giving ID
