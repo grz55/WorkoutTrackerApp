@@ -1,7 +1,7 @@
-package com.grz55.workouttracker.auth.service;
+package com.grz55.workouttracker.service;
 
-import com.grz55.workouttracker.auth.model.Workout;
-import com.grz55.workouttracker.auth.repository.WorkoutRepository;
+import com.grz55.workouttracker.model.Workout;
+import com.grz55.workouttracker.repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class WorkoutServiceImpl implements WorkoutService {
+public class WorkoutService {
 
-    private WorkoutRepository workoutRepository;
+    private final WorkoutRepository workoutRepository;
 
     @Autowired
-    public WorkoutServiceImpl(WorkoutRepository workoutRepository) {
+    public WorkoutService(WorkoutRepository workoutRepository) {
         this.workoutRepository = workoutRepository;
     }
 
@@ -34,7 +34,6 @@ public class WorkoutServiceImpl implements WorkoutService {
         workoutRepository.deleteById(id);
     }
 
-    @Override
     public List<Workout> getMyWorkouts(Long id) {
         return workoutRepository.findByUserId(id);
     }

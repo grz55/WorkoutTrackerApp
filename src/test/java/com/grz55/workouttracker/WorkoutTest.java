@@ -1,11 +1,11 @@
 package com.grz55.workouttracker;
 
-import com.grz55.workouttracker.auth.WorkoutTrackerApplication;
-import com.grz55.workouttracker.auth.model.ExercisePerformed;
-import com.grz55.workouttracker.auth.model.User;
-import com.grz55.workouttracker.auth.model.Workout;
-import com.grz55.workouttracker.auth.repository.ExercisePerformedRepository;
-import com.grz55.workouttracker.auth.repository.WorkoutRepository;
+import com.grz55.workouttracker.WorkoutTrackerApplication;
+import com.grz55.workouttracker.model.ExercisePerformed;
+import com.grz55.workouttracker.model.User;
+import com.grz55.workouttracker.model.Workout;
+import com.grz55.workouttracker.repository.ExercisePerformedRepository;
+import com.grz55.workouttracker.repository.WorkoutRepository;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +42,6 @@ public class WorkoutTest {
         Workout savedWorkout = workoutRepository.save(workout);
 
         assertNotNull(savedWorkout);
-
     }
 
     @Test
@@ -55,14 +54,6 @@ public class WorkoutTest {
         User user = new User();
         user.setId((long) 1);
         workout.setUser(user);
-
-
-        /*Workout workout2 = new Workout();
-        workout2.setAdditionalComment("Arms workout");
-        workout2.setDate("2020-06-04");
-        User user2 = new User();
-        user2.setId((long) 2);
-        workout.setUser(user2);*/
 
         ExercisePerformed exercisePerformed = new ExercisePerformed();
         exercisePerformed.setWorkout(workout);
@@ -85,9 +76,6 @@ public class WorkoutTest {
         exercisePerformedRepository.save(exercisePerformed);
         exercisePerformedRepository.save(exercisePerformed2);
 
-        System.out.println(exercisePerformedRepository.findAll().toString());
-
         assertEquals(exercisePerformedRepository.findAll().size(), 2);
-
     }
 }
