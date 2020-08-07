@@ -4,7 +4,8 @@
 
 https://grz55-workout-tracker.herokuapp.com App deployed on Heroku.
 Launching may take Heroku up to 15 seconds, please wait patiently.
-Pull into IDE, app runs on Tomcat server, also needs MySQL server running.
+Pull into IDE, app runs on Tomcat server, H2 in-memory database used,
+but can run on MySQL (commands ready in application.properties).
 When compiling import.sql file should start to add test user accounts.
 
 # Test credentials: 
