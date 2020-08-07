@@ -21,7 +21,7 @@ All units can be easily organized.
 
 # Technologies: 
 
-Java, Spring Boot, Spring Security, Spring Data, Hibernate, MySQL, Thymeleaf
+Java, Spring Boot, Spring Security, Spring Data, Hibernate, H2/MySQL, Thymeleaf
 
 # App features:
 
